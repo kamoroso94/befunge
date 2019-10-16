@@ -203,7 +203,6 @@ int bef_run(bef_state_t *state, unsigned seed) {
     }
     if (bef_move(state)) return 1;
   }
-  return 0;
 }
 
 /** Destroys each row in the befunge source grid. */
