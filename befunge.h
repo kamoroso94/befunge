@@ -13,14 +13,15 @@ typedef struct {
   stack_t stack;
   dir_t ip_dir;
   size_t ip_row, ip_col;
-  bool string_mode;
+  bool string_mode, is_running;
 } bef_state_t;
 
 int bef_init(bef_state_t *state, const char *source, size_t len);
+int bef_state_validate(bef_state_t *state);
 int bef_run(bef_state_t *state);
 int bef_source_get(bef_state_t *state, size_t row, size_t col, int *value);
-int bef_source_set(bef_state_t *state, size_t row, size_t col, int *value);
-int bef_stack_push(bef_state_t *state, int *value);
+int bef_source_set(bef_state_t *state, size_t row, size_t col, int value);
+int bef_stack_push(bef_state_t *state, int value);
 int bef_stack_pop(bef_state_t *state, int *value);
 int bef_stack_peek(bef_state_t *state, int *value);
 int bef_move(bef_state_t *state);

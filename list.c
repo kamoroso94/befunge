@@ -8,7 +8,7 @@ int list_init(list_t *list, size_t elsize) {
   list->length = 0;
   list->elsize = elsize;
   list->capacity = LIST_INITIAL_CAPACITY;
-  list->buffer = malloc(elsize * list->capacity);
+  list->buffer = calloc(list->capacity, elsize); // TODO: do calloc
   return list->buffer == NULL;
 }
 
@@ -32,6 +32,8 @@ int list_set(list_t *list, size_t index, void *data) {
 
     newbuf = realloc(list->buffer, newcap * list->elsize);
     if (newbuf == NULL) return 1;
+    memset((char *) newbuf + list->length * this.elsize, 0,
+        (newcap - list->length) * this.elsize);
 
     list->buffer = newbuf;
     list->capacity = newcap;
