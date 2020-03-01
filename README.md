@@ -1,2 +1,2 @@
 # befunge
-A command line Befunge interpreter
+A command line Befunge interpreter.
